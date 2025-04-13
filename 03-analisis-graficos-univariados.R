@@ -139,3 +139,4 @@ ggplot(datos_limpios) +
 							         # El nivel por defecto puede conocerse con bw.nrd0(datos_limpios$altura)
 							 fill = "lightgray", col = "black") +
 	labs(x = "Altura (m)", y = "Densidad")
+
