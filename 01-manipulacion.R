@@ -1,5 +1,5 @@
 # Instalo los paquetes necesarios (si aún no los tengo instalados)
-# install.packages("tidyverse")
+#install.packages("tidyverse")
 
 # Cargo los paquetes que voy a usar
 library(tidyverse)
@@ -10,9 +10,21 @@ attach(datos)
 ######################
 # Renombrar columnas #
 ######################
-colnames(datos) <- c("id","altura","diametro","inclinacion","edad","tiempo",
-										 "brotes","especie","follaje","origen","atracnosis",
-										 "roya","manchas","ampollas")
+# Lee los datos
+tincho <- readxl::read_excel("Datos_LP.xlsx", 
+                             col_names = FALSE,
+                             na = "NA",
+                             range = "D3:DN3")
+
+# Limpia NA en los nombres (reemplazándolos con "col_X")
+nombres_columnas <- ifelse(is.na(tincho), 
+                           paste0("col_", seq_along(tincho)), 
+                           tincho)
+
+# Asigna los nombres limpios
+colnames(datos) <- nombres_columnas
+tincho <- nombres_columnas
+str(tincho)
 
 ###################
 # Modificar datos #
@@ -108,3 +120,4 @@ datos_reducido1 <-datos_orden %>%
 # Opción 2: por indexación
 datos_reducido2 <-datos_orden %>%
 	slice(1:500)
+

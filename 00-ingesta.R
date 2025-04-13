@@ -6,13 +6,15 @@
 # El link de los archivos de drive tiene esta forma:
 # https://docs.google.com/spreadsheets/d/16_zhdrZIW72I45SHIsVkGv-KYQw1oeup
 # El id de esta hoja de cálculo es "16_zhdrZIW72I45SHIsVkGv-KYQw1oeup"
-googledrive::drive_download(as_id("16_zhdrZIW72I45SHIsVkGv-KYQw1oeup"), 
+googledrive::drive_download(as_id("10DMEGyZUcNUpHCZN_tLg5GgnoafbmxDZKGtu6CzEDbk"), 
 														overwrite = T)
 
 # Cargo el archivo como .xlsx
-datos <- readxl::read_excel("arbol.xlsx", 
-														col_names = FALSE, 
+datos <- readxl::read_excel("Datos_LP.xlsx", 
+														col_names = FALSE,
+														
 														skip = 3)
 
 # Veo la estructura del dataset
 str(datos)
+
